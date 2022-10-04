@@ -10,8 +10,6 @@ import Card from 'react-bootstrap/Card';
 
 import Offcanvas from 'react-bootstrap/Offcanvas';
 
-import Button from 'react-bootstrap/Button';
-
 import Result from './models/Result';
  
 
