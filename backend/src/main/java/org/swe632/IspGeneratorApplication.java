@@ -19,6 +19,7 @@ public class IspGeneratorApplication {
         SpringApplication.run(IspGeneratorApplication.class, args);
     }
 
+
     @Bean
     public OpenAPI springShopOpenAPI() {
         return new OpenAPI()
