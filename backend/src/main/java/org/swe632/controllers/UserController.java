@@ -6,14 +6,14 @@ import org.swe632.models.Response;
 import org.swe632.models.User;
 import org.swe632.repositories.UserRepository;
 
-@RestController(value = "user")
+@RestController()
 @CrossOrigin
 public class UserController {
 
     @Autowired
     UserRepository userRepository;
 
-    @PostMapping("/getuser")
+    @PostMapping("/login")
     @ResponseBody
     public Response getUserByEmailAndPassword(@RequestParam String email, @RequestParam String password){
 
@@ -25,12 +25,12 @@ public class UserController {
 
         if(user == null) return Response.builder().message("Wrong password.").
                 type(Response.Type.FAILED).build();
-        else return Response.builder().type(Response.Type.OK).object(user).build();
+        else return Response.builder().type(Response.Type.OK).object(user).message("Login success.").build();
     }
 
-    @PostMapping("/adduser")
+    @PostMapping("/createuser")
     @ResponseBody
-    public Response addUser(@RequestParam String firstName,
+    public Response createUser(@RequestParam String firstName,
                             @RequestParam(required = false) String middleName, @RequestParam(required = false) String lastName,
                             @RequestParam String email, @RequestParam String password){
 
@@ -41,6 +41,6 @@ public class UserController {
                 .email(email).password(password).build();
         userRepository.save(user);
 
-        return Response.builder().type(Response.Type.OK).object(user).build();
+        return Response.builder().type(Response.Type.OK).object(user).message("User created.").build();
     }
 }
