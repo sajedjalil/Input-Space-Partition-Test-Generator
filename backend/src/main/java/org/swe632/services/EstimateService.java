@@ -8,7 +8,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Service
-public class TestingService {
+public class EstimateService {
 
     public boolean isDataValid(List<String> data) {
         if(data == null || data.size() ==0) return false;
@@ -34,10 +34,7 @@ public class TestingService {
         for(String characteristics: data) lengths.add( characteristics.split(";").length );
         lengths.sort(Collections.reverseOrder());
 
-        BigInteger result = BigInteger.valueOf(lengths.get(0));
-        if(lengths.size()>1) result = result.multiply( BigInteger.valueOf(lengths.get(1)));
-
-        return result;
+        return BigInteger.valueOf(lengths.get(0));
     }
 
     public BigInteger estimateBCC(List<String> data, List<String> baseBlocks) {
