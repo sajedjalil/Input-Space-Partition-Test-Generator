@@ -1,6 +1,7 @@
 package org.swe632.services;
 
 import org.springframework.stereotype.Service;
+import org.swe632.constants.Constant;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -44,8 +45,8 @@ public class BCCService {
         List<List<String>> filtered = new ArrayList<>();
 
         for(int i=0; i<baseBlocks.size(); i++){
-            String [] blocks = data.get(i).trim().split(";");
-            String [] baseBlock = baseBlocks.get(i).trim().split(";");
+            String [] blocks = data.get(i).trim().split(Constant.separator);
+            String [] baseBlock = baseBlocks.get(i).trim().split(Constant.separator);
 
             List<String> temp = new ArrayList<>(Arrays.asList(blocks));
             for(String base: baseBlock) temp.removeAll(Collections.singleton(base));

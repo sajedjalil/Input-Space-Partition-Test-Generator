@@ -1,6 +1,7 @@
 package org.swe632.services;
 
 import org.springframework.stereotype.Service;
+import org.swe632.constants.Constant;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ public class EstimateService {
 
         BigInteger result = BigInteger.ONE;
         for(String characteristics: data) {
-            result = result.multiply(BigInteger.valueOf(characteristics.split(";").length));
+            result = result.multiply(BigInteger.valueOf(characteristics.split(Constant.separator).length));
         }
         return result;
     }
@@ -31,7 +32,7 @@ public class EstimateService {
     public BigInteger estimateECC(List<String> data) {
 
         ArrayList<Integer> lengths = new ArrayList<>();
-        for(String characteristics: data) lengths.add( characteristics.split(";").length );
+        for(String characteristics: data) lengths.add( characteristics.split(Constant.separator).length );
         lengths.sort(Collections.reverseOrder());
 
         return BigInteger.valueOf(lengths.get(0));
@@ -42,8 +43,9 @@ public class EstimateService {
         BigInteger result = BigInteger.valueOf(baseChoiceCount.longValue());
 
         for(int i=0; i< data.size(); i++){
-            result = result.add(BigInteger.valueOf((long) baseBlocks.get(i).trim().split(";").length
-                    * (data.get(i).trim().split(";").length-baseBlocks.get(i).trim().split(";").length)));
+            result = result.add(BigInteger.valueOf((long) baseBlocks.get(i).trim().split(Constant.separator).length
+                    * (data.get(i).trim().split(Constant.separator).length
+                    - baseBlocks.get(i).trim().split(Constant.separator).length)));
         }
         return result;
     }

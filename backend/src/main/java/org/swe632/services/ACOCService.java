@@ -1,6 +1,7 @@
 package org.swe632.services;
 
 import org.springframework.stereotype.Service;
+import org.swe632.constants.Constant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +23,7 @@ public class ACOCService {
             return;
         }
 
-        for(String block: data.get(layer).trim().split(";")) {
+        for(String block: data.get(layer).trim().split(Constant.separator)) {
             List<String> temp = new ArrayList<>(taken);
             temp.add(block);
             dfs(data, temp, layer+1);

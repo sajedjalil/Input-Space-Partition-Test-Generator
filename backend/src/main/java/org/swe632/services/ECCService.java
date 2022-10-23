@@ -1,6 +1,7 @@
 package org.swe632.services;
 
 import org.springframework.stereotype.Service;
+import org.swe632.constants.Constant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +16,7 @@ public class ECCService {
         for(int i=0; i<maxLen; i++) {
             List<String> temp = new ArrayList<>();
             for(String characteristics: data) {
-                String [] blocks = characteristics.trim().split(";");
+                String [] blocks = characteristics.trim().split(Constant.separator);
                 if( i >= blocks.length) temp.add(blocks[0]);
                 else temp.add(blocks[i]);
             }
@@ -27,7 +28,7 @@ public class ECCService {
     private int findMaxLen(List<String> data) {
         int max = 0;
         for(String characteristics: data) {
-            max = Math.max(max, characteristics.trim().split(";").length);
+            max = Math.max(max, characteristics.trim().split(Constant.separator).length);
         }
         return max;
     }

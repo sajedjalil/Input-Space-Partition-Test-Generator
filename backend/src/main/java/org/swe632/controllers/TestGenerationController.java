@@ -1,11 +1,10 @@
 package org.swe632.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.swe632.constants.Constant.Criteria;
 import org.swe632.models.Response;
-import org.swe632.services.ACOCService;
-import org.swe632.services.BCCService;
-import org.swe632.services.ECCService;
-import org.swe632.services.EstimateService;
+import org.swe632.services.*;
 
 import java.util.List;
 
@@ -20,6 +19,9 @@ public class TestGenerationController {
 
     final BCCService bccService;
 
+    @Autowired
+    ValidityService validityService;
+
     public TestGenerationController(EstimateService estimateService, ACOCService acocService, ECCService eccService, BCCService bccService) {
         this.estimateService = estimateService;
         this.acocService = acocService;
@@ -27,7 +29,13 @@ public class TestGenerationController {
         this.bccService = bccService;
     }
 
-    private enum Criteria{ACOC, ECC, BCC}
+    @PostMapping("/checkvalidity")
+    @ResponseBody
+    public Response checkDataValidity(@RequestParam List<String> data, @RequestParam Criteria criteria,
+                                      @RequestParam(required = false) List<String> baseBlocks) {
+        return validityService.checkIfValid(data, criteria, baseBlocks);
+    }
+
     @PostMapping("/estimate")
     @ResponseBody
     public Response estimateTestCount(@RequestParam List<String> data, @RequestParam Criteria criteria,
