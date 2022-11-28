@@ -10,12 +10,12 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Input-Space-Partition-Test-Generator" target="18" />
+      <module name="Input-Space-Partition-Test-Generator" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="Input-Space-Partition-Test-Generator" options="-parameters" />
+      <module name="Input-Space-Partition-Test-Generator" options="" />
     </option>
   </component>
 </project>
