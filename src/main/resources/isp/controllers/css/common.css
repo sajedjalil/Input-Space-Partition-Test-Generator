@@ -1,0 +1,10 @@
+.custom-button {
+    -fx-background-color: #284469;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-font-size: 18px ;
+}
+
+.text-area{
+    -fx-font-size: 16px;
+}
