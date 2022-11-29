@@ -1,4 +1,12 @@
 # Input-Space-Partition-Test-Generator
+
+## How to run?
+- Install JDK 11 or above. 
+- Install maven 3.8.6 or above. (Older versions are not guaranteed to work) 
+- Open a terminal in the project root directory. 
+- Execute command - mvn clean javafx:run 
+
+## What is this software?
 ISP starts with a finite (usually small) set of characteristics. For example, characteristics to describe MS students might be: major, year started, status, and visa. Each characteristic is divided into a finite (usually small) set of blocks. For example, the student characteristics may have the following blocks:
 
 #### major = [swe, cs, infs, other]
@@ -32,3 +40,6 @@ Note the “*” in the third combination. Since both C1 and C2 have already bee
 The tester chooses one “base” block from each characteristic. Which block and why that block is chosen does not matter for this project. Base choice combinations include the base combination (all the base blocks), plus one combination for each other block, swapped in one at a time. In our example, this results in 6 combinations:
 [A1,B1,C1] (base block);
 [A1,B1,C2]; [A1,B2,C1]; [A1,B3,C1]; [A2,B1,C1]; [A3,B1,C1]
+
+## Accessibility
+This software is accessible to screen readers.
